@@ -9,17 +9,17 @@
 
 // ==================== CONFIGURATION ====================
 const SITE_CONFIG = {
-    baseUrl: window.location.origin,
+    baseUrl: 'https://agenticx5-landingpage.netlify.app',
     pages: {
-        home: '/agenticx5-landing-wope.html',
-        marketplace: '/agenticx5-marketplace-complete.html',
-        architecture: '/index-architecture-agenticx5.html',
+        home: '/index.html',
+        marketplace: '/marketplace.html',
+        architecture: '/architecture.html',
         products: {
-            sst: '/agenticx5-sst-qhse-product.html',
-            production: '/agenticx5-production-product.html',
-            maintenance: '/agenticx5-maintenance-product.html',
-            qualite: '/agenticx5-qualite-product.html',
-            rh: '/agenticx5-rh-product.html'
+            sst: '/produits/sst-qhse.html',
+            production: '/produits/production.html',
+            maintenance: '/produits/maintenance.html',
+            qualite: '/produits/qualite.html',
+            rh: '/produits/rh.html'
         },
         solutions: '/solutions/',
         security: '/securite/trust-center.html',
