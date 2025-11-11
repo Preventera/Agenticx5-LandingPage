@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgenticX5 - Architecture Site Complète</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .page-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .page-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+            border-color: #10b981;
+        }
+
+        .page-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-card.landing .page-icon {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .page-card.sst .page-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .page-card.production .page-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .page-card.marketplace .page-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .page-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-features li {
+            font-size: 0.85rem;
+            padding: 0.4rem 0;
+            opacity: 0.75;
+        }
+
+        .page-features li::before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .page-link {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover {
+            background: #10b981;
+            color: #fff;
+            border-color: #10b981;
+        }
+
+        .categories-section {
+            margin-top: 4rem;
+        }
+
+        .categories-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .architecture-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .diagram-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .flow-node {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #10b981;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #10b981;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            .flow-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Architecture Site AgenticX5</h1>
+            <p class="subtitle">Navigation complète de l'écosystème agentique industriel</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Pages Créées</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Agents Documentés</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Catégories</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Pages Principales -->
+        <div class="nav-grid">
+            <div class="page-card landing">
+                <div class="page-icon">🏠</div>
+                <h2 class="page-title">Landing Page Principale</h2>
+                <p class="page-description">
+                    Point d'entrée du site avec présentation globale d'AgenticX5, megamenu complet et sections clés.
+                </p>
+                <ul class="page-features">
+                    <li>Hero avec proposition agentique</li>
+                    <li>Trust bar certifications</li>
+                    <li>6 blocs fonctionnels</li>
+                    <li>Megamenu 4 colonnes</li>
+                    <li>Témoignage + Contact</li>
+                </ul>
+                <a href="agenticx5-landing-wope.html" class="page-link" target="_blank">
+                    Voir la page →
+                </a>
+            </div>
+
+            <div class="page-card sst">
+                <div class="page-icon">🛡️</div>
+                <h2 class="page-title">SST/QHSE Produit</h2>
+                <p class="page-description">
+                    Page dédiée avec 40+ agents SST, guides LOTO dynamiques et Trust Center complet.
+                </p>
+                <ul class="page-features">
+                    <li>40+ agents SST spécialisés</li>
+                    <li>Boucle agentique 6 étapes</li>
+                    <li>Guides LOTO interactifs</li>
+                    <li>Trust Center (F1: 0.91)</li>
+                    <li>Conformité Loi 25, C-25</li>
+                </ul>
+                <a href="agenticx5-sst-qhse-product.html" class="page-link" target="_blank">
+                    Voir la page →
+                </a>
+            </div>
+
+            <div class="page-card production">
+                <div class="page-icon">⚙️</div>
+                <h2 class="page-title">Production Produit</h2>
+                <p class="page-description">
+                    Solutions production avec 35+ agents, dashboard OEE temps réel et cas d'usage concrets.
+                </p>
+                <ul class="page-features">
+                    <li>35+ agents Production</li>
+                    <li>Dashboard OEE en direct</li>
+                    <li>3 cas d'usage détaillés</li>
+                    <li>ROI prouvé (+35% productivité)</li>
+                    <li>Calculateur ROI</li>
+                </ul>
+                <a href="agenticx5-production-product.html" class="page-link" target="_blank">
+                    Voir la page →
+                </a>
+            </div>
+
+            <div class="page-card marketplace">
+                <div class="page-icon">🛒</div>
+                <h2 class="page-title">Marketplace Complète</h2>
+                <p class="page-description">
+                    Vue d'ensemble des 120+ agents avec filtres, recherche et Team Builder interactif.
+                </p>
+                <ul class="page-features">
+                    <li>120+ agents toutes catégories</li>
+                    <li>Filtres avancés par type</li>
+                    <li>Recherche intelligente</li>
+                    <li>Team Builder (panel fixe)</li>
+                    <li>Déploiement d'équipes</li>
+                </ul>
+                <a href="agenticx5-marketplace-complete.html" class="page-link" target="_blank">
+                    Voir la page →
+                </a>
+            </div>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="architecture-diagram">
+            <h2 class="diagram-title">🗺️ Flux de Navigation</h2>
+            <div class="flow-diagram">
+                <div class="flow-node">ACCUEIL</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">PRODUITS<br>(SST/Production)</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">MARKETPLACE</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">TEAM BUILDER</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">DÉMO</div>
+            </div>
+        </div>
+
+        <!-- Categories Overview -->
+        <section class="categories-section">
+            <h2 class="categories-title">📊 Agents par Catégorie</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🛡️</div>
+                    <h3 class="category-name">SST/QHSE</h3>
+                    <div class="category-count">40+</div>
+                    <p class="category-label">Agents Sécurité</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">⚙️</div>
+                    <h3 class="category-name">Production</h3>
+                    <div class="category-count">35+</div>
+                    <p class="category-label">Agents Production</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <h3 class="category-name">Maintenance</h3>
+                    <div class="category-count">28+</div>
+                    <p class="category-label">Agents Maintenance</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">✓</div>
+                    <h3 class="category-name">Qualité</h3>
+                    <div class="category-count">12+</div>
+                    <p class="category-label">Agents Qualité</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">👥</div>
+                    <h3 class="category-name">RH</h3>
+                    <div class="category-count">7+</div>
+                    <p class="category-label">Agents RH</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Métriques Globales -->
+        <div class="architecture-diagram" style="margin-top: 4rem;">
+            <h2 class="diagram-title">📈 Métriques Globales</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #10b981;">92%</div>
+                    <div style="opacity: 0.8;">Réduction Incidents</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #f59e0b;">+35%</div>
+                    <div style="opacity: 0.8;">Gain Productivité</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #8b5cf6;">-68%</div>
+                    <div style="opacity: 0.8;">Réduction Pannes</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: 800; color: #3b82f6;">8 mois</div>
+                    <div style="opacity: 0.8;">ROI Moyen</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation -->
+        <div class="architecture-diagram" style="margin-top: 4rem;">
+            <h2 class="diagram-title">📚 Documentation Complète</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                Consultez le document récapitulatif pour l'architecture détaillée, les métriques et le guide d'implémentation
+            </p>
+            <div style="text-align: center;">
+                <a href="ARCHITECTURE_SITE_AGENTICX5.md" class="page-link" style="font-size: 1.1rem; padding: 1rem 2rem;" target="_blank">
+                    📖 Voir la Documentation Complète
+                </a>
+            </div>
+        </div>
+
+        <!-- CTA Final -->
+        <div class="cta-section">
+            <h2>🎯 Prêt à Déployer AgenticX5 ?</h2>
+            <p>
+                Explorez toutes les pages créées et découvrez comment 120+ agents peuvent transformer 
+                votre industrie avec l'intelligence agentique.
+            </p>
+            <div class="cta-buttons">
+                <a href="agenticx5-marketplace-complete.html" class="btn-primary" target="_blank">
+                    Explorer la Marketplace
+                </a>
+                <a href="agenticx5-landing-wope.html" class="btn-secondary" target="_blank">
+                    Voir la Landing Page
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7;">
+            <p>© 2025 GenAISafety - AgenticX5</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                Architecture site créée le 10 novembre 2025 | Version 1.0
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Applique l'animation à tous les éléments
+        document.querySelectorAll('.page-card, .category-card, .architecture-diagram').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Effet hover sur les cartes
+        document.querySelectorAll('.page-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const link = this.querySelector('.page-link');
+                if (link) {
+                    window.open(link.href, '_blank');
+                }
+            });
+        });
+
+        console.log('%c🚀 AgenticX5 Architecture Site', 'font-size: 20px; font-weight: bold; color: #10b981;');
+        console.log('%c4 pages créées | 120+ agents documentés | Architecture complète', 'font-size: 12px; color: #64748b;');
+    </script>
+</body>
+</html>

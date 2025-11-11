@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Intégration - AgenticX5</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        /* Header avec Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a4d7a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #10b981;
+        }
+
+        .btn-demo {
+            background: #10b981;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-demo:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Contenu Principal */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+        }
+
+        .demo-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Agents Grid */
+        .agents-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .agent-card {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .agent-card:hover {
+            border-color: #10b981;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .agent-card[data-category="sst"] { border-left: 4px solid #10b981; }
+        .agent-card[data-category="production"] { border-left: 4px solid #f59e0b; }
+        .agent-card[data-category="maintenance"] { border-left: 4px solid #8b5cf6; }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .agent-id {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .agent-category {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .agent-description {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .agent-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-add {
+            flex: 1;
+            background: #10b981;
+            color: #fff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-add:hover {
+            background: #059669;
+            transform: scale(1.02);
+        }
+
+        .btn-add:disabled {
+            background: #10b981;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-details {
+            padding: 0.75rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-details:hover {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        /* Team Builder Panel (Fixed) */
+        .team-builder {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            min-width: 320px;
+            max-width: 380px;
+            z-index: 999;
+            border: 2px solid #e2e8f0;
+        }
+
+        .team-builder h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .team-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .team-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .team-list::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        .team-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .btn-deploy {
+            width: 100%;
+            background: #10b981;
+            color: #fff;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-deploy:hover:not(:disabled) {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-deploy:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .team-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .btn-clear {
+            flex: 1;
+            background: transparent;
+            color: #ef4444;
+            padding: 0.6rem;
+            border: 2px solid #fee2e2;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn-clear:hover {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .btn-export {
+            flex: 1;
+            background: transparent;
+            color: #3b82f6;
+            padding: 0.6rem;
+            border: 2px solid #dbeafe;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn-export:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+
+        /* Code Examples */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-block .comment {
+            color: #94a3b8;
+        }
+
+        .code-block .keyword {
+            color: #f59e0b;
+        }
+
+        .code-block .string {
+            color: #10b981;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .team-builder {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                min-width: auto;
+                max-width: none;
+            }
+
+            .agents-demo {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: slideUp 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <nav>
+            <a onclick="Navigation.goHome()" class="logo">AgenticX5</a>
+            
+            <div class="nav-links">
+                <a onclick="Navigation.goToMarketplace()">Marketplace</a>
+                <a onclick="Navigation.goToProduct('sst')">SST/QHSE</a>
+                <a onclick="Navigation.goToProduct('production')">Production</a>
+                <a onclick="Navigation.goToTrustCenter()">Trust Center</a>
+                <a onclick="Navigation.requestDemo('header')" class="btn-demo">
+                    Demander une démo
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <div class="demo-section fade-in">
+            <span class="badge">📚 Template d'Intégration</span>
+            <h1>Comment Intégrer navigation.js</h1>
+            <p style="font-size: 1.1rem; color: #475569; margin-bottom: 2rem;">
+                Ce template montre comment intégrer le système de navigation et le Team Builder 
+                sur n'importe quelle page du site AgenticX5.
+            </p>
+
+            <h2>1. Inclure navigation.js</h2>
+            <div class="code-block">
+<span class="comment">&lt;!-- À la fin du body, avant la fermeture &lt;/body&gt; --&gt;</span>
+<span class="keyword">&lt;script</span> <span class="keyword">src</span>=<span class="string">"navigation.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+
+<span class="comment">&lt;!-- Ou depuis un CDN (à configurer) --&gt;</span>
+<span class="keyword">&lt;script</span> <span class="keyword">src</span>=<span class="string">"https://cdn.agenticx5.com/js/navigation.min.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+            </div>
+
+            <h2>2. Ajouter le Team Builder Panel</h2>
+            <div class="code-block">
+<span class="comment">&lt;!-- Panel fixe en bas à droite --&gt;</span>
+<span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"team-builder"</span> <span class="keyword">id</span>=<span class="string">"teamBuilder"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;h3&gt;</span>🎯 Mon Équipe d'Agents <span class="keyword">&lt;span</span> <span class="keyword">id</span>=<span class="string">"teamCounter"</span><span class="keyword">&gt;&lt;/span&gt;&lt;/h3&gt;</span>
+    <span class="keyword">&lt;div</span> <span class="keyword">class</span>=<span class="string">"team-list"</span> <span class="keyword">id</span>=<span class="string">"teamList"</span><span class="keyword">&gt;&lt;/div&gt;</span>
+    <span class="keyword">&lt;button</span> <span class="keyword">class</span>=<span class="string">"btn-deploy"</span> <span class="keyword">id</span>=<span class="string">"deployBtn"</span> 
+            <span class="keyword">onclick</span>=<span class="string">"teamBuilder.deploy()"</span><span class="keyword">&gt;</span>
+        Déployer l'Équipe
+    <span class="keyword">&lt;/button&gt;</span>
+<span class="keyword">&lt;/div&gt;</span>
+            </div>
+
+            <h2>3. Utiliser les Fonctions de Navigation</h2>
+            <div class="code-block">
+<span class="comment">// Aller à une page produit</span>
+<span class="keyword">Navigation</span>.goToProduct(<span class="string">'sst'</span>);        <span class="comment">// SST/QHSE</span>
+<span class="keyword">Navigation</span>.goToProduct(<span class="string">'production'</span>);  <span class="comment">// Production</span>
+
+<span class="comment">// Aller à la marketplace avec filtre</span>
+<span class="keyword">Navigation</span>.goToMarketplace(<span class="string">'sst'</span>);
+
+<span class="comment">// Aller aux détails d'un agent</span>
+<span class="keyword">Navigation</span>.goToAgentDetails(<span class="string">'A-42'</span>, <span class="string">'sst'</span>);
+
+<span class="comment">// Demander une démo</span>
+<span class="keyword">Navigation</span>.requestDemo(<span class="string">'page-produit'</span>);
+            </div>
+
+            <h2>4. Gérer le Team Builder</h2>
+            <div class="code-block">
+<span class="comment">// Ajouter un agent</span>
+<span class="keyword">teamBuilder</span>.addAgent(<span class="string">'A-42'</span>, <span class="string">'Dynamic LOTO Planner'</span>, <span class="string">'sst'</span>);
+
+<span class="comment">// Retirer un agent</span>
+<span class="keyword">teamBuilder</span>.removeAgent(<span class="string">'A-42'</span>);
+
+<span class="comment">// Obtenir l'équipe actuelle</span>
+<span class="keyword">const</span> team = <span class="keyword">teamBuilder</span>.getTeam();
+
+<span class="comment">// Vider l'équipe</span>
+<span class="keyword">teamBuilder</span>.clearTeam();
+
+<span class="comment">// Déployer l'équipe</span>
+<span class="keyword">teamBuilder</span>.deploy();
+            </div>
+
+            <h2>5. Tracker les Analytics</h2>
+            <div class="code-block">
+<span class="comment">// Track CTA</span>
+<span class="keyword">Analytics</span>.trackCTA(<span class="string">'Demo Request - Hero'</span>);
+
+<span class="comment">// Track navigation</span>
+<span class="keyword">Analytics</span>.trackNavigation(<span class="string">'Marketplace'</span>);
+
+<span class="comment">// Track recherche</span>
+<span class="keyword">Analytics</span>.trackSearch(<span class="string">'maintenance prédictive'</span>);
+
+<span class="comment">// Track action Team Builder</span>
+<span class="keyword">Analytics</span>.trackTeamAction(<span class="string">'add'</span>, <span class="string">'A-42'</span>);
+            </div>
+        </div>
+
+        <!-- ==================== AGENTS DEMO ==================== -->
+        <div class="demo-section fade-in">
+            <h2>Exemple d'Agents Interactifs</h2>
+            <p style="color: #475569; margin-bottom: 1rem;">
+                Cliquez sur "Ajouter" pour tester le Team Builder →
+            </p>
+
+            <div class="agents-demo">
+                <!-- Agent SST -->
+                <div class="agent-card" data-category="sst" data-agent-id="A-42">
+                    <div class="agent-header">
+                        <h3 class="agent-id">A-42 · Dynamic LOTO Planner</h3>
+                        <span class="agent-category">SST/QHSE</span>
+                    </div>
+                    <p class="agent-description">
+                        Replanification temps réel des séquences de cadenassage selon accès/zones. 
+                        Détecte conflits, optimise durées, génère check-lists dynamiques.
+                    </p>
+                    <div class="agent-actions">
+                        <button class="btn-add">+ Ajouter à mon équipe</button>
+                        <button class="btn-details" 
+                                onclick="Navigation.goToAgentDetails('A-42', 'sst')">
+                            Détails
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Agent Production -->
+                <div class="agent-card" data-category="production" data-agent-id="P-12">
+                    <div class="agent-header">
+                        <h3 class="agent-id">P-12 · Smart Scheduler Pro</h3>
+                        <span class="agent-category">Production</span>
+                    </div>
+                    <p class="agent-description">
+                        Planification optimale multi-contraintes: capacités, compétences, 
+                        maintenances, urgences. Algorithmes génétiques + ML.
+                    </p>
+                    <div class="agent-actions">
+                        <button class="btn-add">+ Ajouter à mon équipe</button>
+                        <button class="btn-details"
+                                onclick="Navigation.goToAgentDetails('P-12', 'production')">
+                            Détails
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Agent Maintenance -->
+                <div class="agent-card" data-category="maintenance" data-agent-id="M-03">
+                    <div class="agent-header">
+                        <h3 class="agent-id">M-03 · Predictive Maintenance Engine</h3>
+                        <span class="agent-category">Maintenance</span>
+                    </div>
+                    <p class="agent-description">
+                        ML prédictif sur vibrations, températures, consommations. 
+                        Anticipe pannes 7-30 jours à l'avance.
+                    </p>
+                    <div class="agent-actions">
+                        <button class="btn-add">+ Ajouter à mon équipe</button>
+                        <button class="btn-details"
+                                onclick="Navigation.goToAgentDetails('M-03', 'maintenance')">
+                            Détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== TEAM BUILDER PANEL ==================== -->
+    <div class="team-builder" id="teamBuilder">
+        <h3>🎯 Mon Équipe d'Agents <span id="teamCounter"></span></h3>
+        <div class="team-list" id="teamList">
+            <!-- Rempli dynamiquement par navigation.js -->
+        </div>
+        <button class="btn-deploy" id="deployBtn" onclick="teamBuilder.deploy()">
+            Déployer l'Équipe (0)
+        </button>
+        <div class="team-actions">
+            <button class="btn-clear" onclick="teamBuilder.clearTeam()">
+                🗑️ Vider
+            </button>
+            <button class="btn-export" onclick="teamBuilder.exportTeam()">
+                💾 Exporter
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Navigation.js doit être chargé en premier -->
+    <script src="navigation.js"></script>
+
+    <!-- Script spécifique à cette page -->
+    <script>
+        console.log('✅ Template chargé avec navigation.js');
+        console.log('📊 Configuration:', SITE_CONFIG);
+        console.log('🎯 Team Builder prêt:', teamBuilder);
+        console.log('🧭 Navigation prête:', Navigation);
+        console.log('📈 Analytics prêts:', Analytics);
+    </script>
+</body>
+</html>

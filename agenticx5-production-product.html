@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AgenticX5 Production - Optimisation intelligente de la production industrielle. 35+ agents pour planification, OEE, traçabilité et supervision temps réel.">
+    <title>AgenticX5 Production — Intelligence Agentique pour l'Excellence Opérationnelle</title>
+    
+    <style>
+        :root {
+            --primary-blue: #1a4d7a;
+            --secondary-blue: #2563a8;
+            --accent-orange: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --dark-grey: #1e293b;
+            --medium-grey: #475569;
+            --light-grey: #e2e8f0;
+            --slate-50: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background: var(--slate-50);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            padding: 100px 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .hero-product {
+            background: linear-gradient(135deg, #0f172a 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-product h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+        }
+
+        .oee-dashboard {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 400px;
+        }
+
+        .oee-metric {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .oee-metric h3 {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .oee-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+        }
+
+        .oee-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 0.75rem;
+            overflow: hidden;
+        }
+
+        .oee-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-orange), #fbbf24);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-orange);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-grey);
+            margin-bottom: 1rem;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .agent-card {
+            background: var(--white);
+            border: 2px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .agent-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .agent-id {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+        }
+
+        .agent-category {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .agent-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        .metric-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .btn-add {
+            flex: 1;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-details {
+            padding: 0.7rem 1.2rem;
+            border: 2px solid var(--light-grey);
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .agent-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .use-cases {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .use-case {
+            padding: 2rem;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .use-case h3 {
+            color: var(--dark-grey);
+            margin-bottom: 1rem;
+        }
+
+        .roi-section {
+            background: linear-gradient(135deg, var(--accent-orange), #fbbf24);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-top: 5rem;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .roi-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .roi-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">AgenticX5</a>
+            <a href="#demo" class="btn-primary">Demander une démo</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span>→</span>
+        <a href="/produits">Produits</a>
+        <span>→</span>
+        <span>Production</span>
+    </div>
+
+    <div class="hero-product">
+        <div class="hero-content">
+            <div>
+                <div class="hero-badge">
+                    ⚙️ OEE Temps Réel • Planification Optimale
+                </div>
+                <h1>Intelligence Agentique pour l'Excellence Opérationnelle</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                    35+ agents orchestrent planification, OEE, traçabilité et supervision 
+                    pour maximiser votre productivité industrielle.
+                </p>
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <a href="#demo" class="btn-primary">Démo Production Live</a>
+                    <button class="btn-primary" style="background: transparent; border: 2px solid white;">
+                        Calculer mon ROI
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-number">+35%</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Productivité</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">35+</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Agents Production</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">-28%</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Temps arrêt</div>
+                    </div>
+                </div>
+            </div>
+            <div class="oee-dashboard">
+                <h3 style="margin-bottom: 2rem; font-size: 1.3rem;">OEE Temps Réel — Ligne A</h3>
+                <div class="oee-metric">
+                    <h3>OEE Global</h3>
+                    <div class="oee-value">87.3%</div>
+                    <div class="oee-progress">
+                        <div class="oee-progress-bar" style="width: 87.3%;"></div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 0.85rem; opacity: 0.9;">Disponibilité</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #10b981;">94.2%</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 0.85rem; opacity: 0.9;">Performance</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #f59e0b;">91.8%</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 0.85rem; opacity: 0.9;">Qualité</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #3b82f6;">98.6%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="marketplace">
+        <div class="section-header">
+            <div class="section-badge">Marketplace</div>
+            <h2 class="section-title">35+ Agents Production Spécialisés</h2>
+            <p style="font-size: 1.1rem; color: var(--medium-grey);">
+                Agents autonomes pour planification, optimisation OEE, traçabilité et supervision
+            </p>
+        </div>
+
+        <div class="agents-grid">
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-12 · Smart Scheduler Pro</h3>
+                    <span class="agent-category">Planification</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Planification optimale multi-contraintes: capacités, compétences, maintenances, 
+                    urgences. Algorithmes génétiques + ML pour minimiser changements d'outils.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Optimisation</div>
+                        <div class="metric-value">+24%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Changements</div>
+                        <div class="metric-value">-40%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Délai</div>
+                        <div class="metric-value">&lt;2min</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-05 · OEE Optimizer</h3>
+                    <span class="agent-category">Performance</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Surveillance OEE temps réel par ligne/machine. Détection anomalies, 
+                    micro-arrêts, pertes qualité. Recommandations actions correctives automatisées.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">OEE Gain</div>
+                        <div class="metric-value">+12pts</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Fréquence</div>
+                        <div class="metric-value">1s</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Lignes</div>
+                        <div class="metric-value">100+</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-18 · Production Flow Analyzer</h3>
+                    <span class="agent-category">Optimisation</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Analyse flux production: goulots, temps cycles, WIP, lead times. 
+                    Simulation scénarios, optimisation Value Stream Mapping automatisée.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Lead Time</div>
+                        <div class="metric-value">-31%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">WIP</div>
+                        <div class="metric-value">-45%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Débit</div>
+                        <div class="metric-value">+28%</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-23 · Real-Time Traceability</h3>
+                    <span class="agent-category">Traçabilité</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Traçabilité complète produits: matières premières, lots, opérateurs, 
+                    équipements, paramètres process. Blockchain-ready, conformité ISO 9001.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Granularité</div>
+                        <div class="metric-value">Unitaire</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Rappel</div>
+                        <div class="metric-value">&lt;15min</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Produits</div>
+                        <div class="metric-value">1M+</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-30 · Quality Gate Controller</h3>
+                    <span class="agent-category">Qualité</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Contrôle qualité automatisé à chaque gate: vision, mesures dimensionnelles, 
+                    tests fonctionnels. Décision go/no-go instantanée avec traçabilité.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Détection</div>
+                        <div class="metric-value">99.2%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Faux Rejet</div>
+                        <div class="metric-value">&lt;0.5%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Débit</div>
+                        <div class="metric-value">300/h</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">P-07 · Energy Optimizer</h3>
+                    <span class="agent-category">Énergie</span>
+                </div>
+                <p style="color: var(--medium-grey); margin-bottom: 1.5rem;">
+                    Optimisation consommation énergétique par machine/ligne/atelier. 
+                    Détection surconsommations, planification heures creuses, reporting ISO 50001.
+                </p>
+                <div class="agent-metrics">
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Économies</div>
+                        <div class="metric-value">-22%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">ROI</div>
+                        <div class="metric-value">8 mois</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: #64748b;">CO₂</div>
+                        <div class="metric-value">-18%</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn-primary">Voir les 35+ agents Production →</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="use-cases">
+            <div class="section-header" style="text-align: left;">
+                <div class="section-badge">Cas d'Usage</div>
+                <h2 class="section-title" style="text-align: left;">Scénarios Concrets</h2>
+            </div>
+
+            <div class="use-case-grid">
+                <div class="use-case">
+                    <h3>🎯 Mission: Maximiser OEE Ligne Embouteillage</h3>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Détection:</strong> OEE à 72% vs objectif 85%
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Analyse:</strong> Agents identifient micro-arrêts changements formats (18% du temps)
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Action:</strong> Replanification lots par taille, pré-setup parallèle
+                    </p>
+                    <p style="color: var(--accent-orange); font-weight: 600;">
+                        ✓ Résultat: OEE → 89%, +23% débit
+                    </p>
+                </div>
+
+                <div class="use-case">
+                    <h3>⚡ Mission: Réduire Lead Time Assemblage</h3>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Contexte:</strong> Lead time 14 jours, concurrence à 9j
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Analyse Flow:</strong> Goulot station 4, WIP excessif
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Solution:</strong> Rebalance charge, buffer dynamique, priorisation ML
+                    </p>
+                    <p style="color: var(--accent-orange); font-weight: 600;">
+                        ✓ Résultat: Lead time → 8.5j, -39%
+                    </p>
+                </div>
+
+                <div class="use-case">
+                    <h3>🔍 Mission: Traçabilité Rappel Produit</h3>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Alerte:</strong> Lot matière première non-conforme détecté
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Requête:</strong> Identification tous produits impactés
+                    </p>
+                    <p style="color: var(--medium-grey); margin-bottom: 1rem;">
+                        <strong>Traçabilité:</strong> 1847 unités localisées en 12 minutes
+                    </p>
+                    <p style="color: var(--accent-orange); font-weight: 600;">
+                        ✓ Économie: 180k$ vs rappel massif
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="roi-section">
+            <div class="section-header" style="color: white;">
+                <h2 class="section-title" style="color: white;">ROI Production Prouvé</h2>
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                    Résultats moyens constatés sur 50+ déploiements industriels
+                </p>
+            </div>
+
+            <div class="roi-grid">
+                <div class="roi-card">
+                    <h3>+35%</h3>
+                    <p><strong>Productivité</strong><br>Capacité production</p>
+                </div>
+                <div class="roi-card">
+                    <h3>-28%</h3>
+                    <p><strong>Temps Arrêt</strong><br>Downtime non planifié</p>
+                </div>
+                <div class="roi-card">
+                    <h3>+12pts</h3>
+                    <p><strong>OEE Moyen</strong><br>Toutes lignes confondues</p>
+                </div>
+                <div class="roi-card">
+                    <h3>-31%</h3>
+                    <p><strong>Lead Time</strong><br>Délai livraison</p>
+                </div>
+                <div class="roi-card">
+                    <h3>8 mois</h3>
+                    <p><strong>ROI Moyen</strong><br>Retour investissement</p>
+                </div>
+                <div class="roi-card">
+                    <h3>-22%</h3>
+                    <p><strong>Énergie</strong><br>Consommation</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn-primary" style="background: white; color: var(--accent-orange);">
+                    Calculer Mon ROI Personnalisé →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section style="text-align: center;">
+        <h2 class="section-title">Prêt à Optimiser Votre Production ?</h2>
+        <p style="font-size: 1.1rem; color: var(--medium-grey); margin-bottom: 2rem;">
+            Découvrez comment 35+ agents peuvent transformer votre performance industrielle
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="#" class="btn-primary">Demander une démo Production</a>
+            <button class="btn-primary" style="background: transparent; color: var(--accent-orange); border: 2px solid var(--accent-orange);">
+                Télécharger le cas d'étude
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GenAISafety - AgenticX5 Production. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

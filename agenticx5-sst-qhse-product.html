@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AgenticX5 SST/QHSE - Plateforme agentique pour la santé, sécurité au travail et conformité. 40+ agents spécialisés, LOTO dynamique, conformité Loi 25 et C-25.">
+    <title>AgenticX5 SST/QHSE — Agents Intelligents pour la Sécurité au Travail</title>
+    
+    <style>
+        :root {
+            --primary-blue: #1a4d7a;
+            --secondary-blue: #2563a8;
+            --accent-green: #3b8c5c;
+            --emerald: #10b981;
+            --dark-grey: #1e293b;
+            --medium-grey: #475569;
+            --light-grey: #e2e8f0;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-500: #64748b;
+            --slate-900: #0f172a;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background: var(--slate-50);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--slate-500);
+            padding-top: 80px;
+            padding: 100px 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero-product {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 140, 92, 0.2);
+            border: 1px solid rgba(59, 140, 92, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-product h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-product p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--emerald);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .hero-visual {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--emerald);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        .trust-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-label {
+            font-size: 0.9rem;
+            color: var(--slate-500);
+            margin-bottom: 2rem;
+        }
+
+        .trust-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            opacity: 0.7;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--slate-100);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-grey);
+        }
+
+        /* Section Container */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(59, 140, 92, 0.1);
+            color: var(--accent-green);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-grey);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--medium-grey);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* How It Works */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .workflow-step {
+            position: relative;
+            background: var(--white);
+            border: 2px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .workflow-step:hover {
+            border-color: var(--emerald);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--emerald), #059669);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .workflow-step h3 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: var(--dark-grey);
+        }
+
+        .workflow-step p {
+            color: var(--medium-grey);
+            line-height: 1.7;
+        }
+
+        /* Marketplace d'agents */
+        .marketplace-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--light-grey);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--emerald);
+            background: rgba(16, 185, 129, 0.05);
+            color: var(--emerald);
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .agent-card {
+            background: var(--white);
+            border: 2px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .agent-card:hover {
+            border-color: var(--emerald);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .agent-id {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+        }
+
+        .agent-category {
+            background: var(--slate-100);
+            color: var(--slate-500);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .agent-description {
+            color: var(--medium-grey);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .agent-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-grey);
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+        }
+
+        .agent-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-add {
+            flex: 1;
+            background: var(--emerald);
+            color: var(--white);
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-add:hover {
+            background: #059669;
+        }
+
+        .btn-details {
+            padding: 0.7rem 1.2rem;
+            border: 2px solid var(--light-grey);
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .btn-details:hover {
+            border-color: var(--emerald);
+            color: var(--emerald);
+        }
+
+        /* Trust Center Section */
+        .trust-center {
+            background: linear-gradient(135deg, var(--slate-900), var(--primary-blue));
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-top: 5rem;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trust-metric {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .trust-metric h3 {
+            font-size: 2.5rem;
+            color: var(--emerald);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-metric p {
+            opacity: 0.9;
+        }
+
+        /* Guides LOTO */
+        .loto-guides {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .guide-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .guide-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--slate-50);
+            border: 2px solid var(--light-grey);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .guide-item:hover {
+            border-color: var(--emerald);
+            background: var(--white);
+        }
+
+        .guide-info h4 {
+            color: var(--dark-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--slate-500);
+        }
+
+        .guide-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--slate-900);
+            color: var(--light-grey);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/" class="logo">AgenticX5</a>
+            <div class="cta-group">
+                <a href="#demo" class="btn-primary">Demander une démo</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span>→</span>
+        <a href="/produits">Produits</a>
+        <span>→</span>
+        <span>SST/QHSE</span>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero-product">
+        <div class="hero-content">
+            <div>
+                <div class="hero-badge">
+                    🛡️ Conformité Loi 25 • C-25 • CNESST
+                </div>
+                <h1>Agents Intelligents pour la Sécurité au Travail</h1>
+                <p>
+                    Votre équipe d'agents pour l'usine. Détecter, prévenir, tracer. 
+                    De la posture opérateur aux procédures LOTO — un cerveau contextuel, 
+                    des actions sûres en temps réel.
+                </p>
+                <div class="cta-group">
+                    <a href="#demo" class="btn-primary">Voir une démo de 12 minutes</a>
+                    <a href="#marketplace" class="btn-secondary">Explorer les 40+ agents</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Réduction incidents</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Agents SST/QHSE</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;1.8s</div>
+                        <div class="stat-label">Latence moyenne</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <h3 style="margin-bottom: 2rem;">Boucle Agentique Temps Réel</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem;">
+                    <div>🔍 <strong>Détection</strong> → Capteurs IoT + Vision</div>
+                    <div>🧠 <strong>Contexte</strong> → Safety Graph (Neo4j)</div>
+                    <div>🎯 <strong>Prédiction</strong> → Modèles ML</div>
+                    <div>⚡ <strong>Orchestration</strong> → Agents coordonnés</div>
+                    <div>✅ <strong>Exécution</strong> → Actions automatisées</div>
+                    <div>📊 <strong>Traçabilité</strong> → Audit complet</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-content">
+            <p class="trust-label">Confiance de leaders industriels et conformité garantie</p>
+            <div class="trust-logos">
+                <div class="trust-badge">🔒 ISO 27001</div>
+                <div class="trust-badge">✓ RGPD / Loi 25</div>
+                <div class="trust-badge">🇨🇦 CNESST</div>
+                <div class="trust-badge">🌐 OSHA</div>
+                <div class="trust-badge">🔐 SOC 2</div>
+                <div class="trust-badge">⚖️ C-25 Compliant</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment ça marche -->
+    <section>
+        <div class="section-header">
+            <div class="section-badge">Processus Agentique</div>
+            <h2 class="section-title">Comment AgenticX5 SST/QHSE Fonctionne</h2>
+            <p class="section-subtitle">
+                Six étapes orchestrées par 40+ agents spécialisés pour une sécurité proactive
+            </p>
+        </div>
+
+        <div class="workflow-grid">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <h3>Détection Multi-Capteurs</h3>
+                <p>
+                    Agents de surveillance analysent caméras, capteurs IoT, wearables et ERP 
+                    pour détecter anomalies, postures dangereuses et conditions à risque.
+                </p>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <h3>Contexte via Safety Graph</h3>
+                <p>
+                    Le graphe de connaissances Neo4j enrichit chaque événement avec historique, 
+                    procédures, équipements, formations et contraintes réglementaires.
+                </p>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <h3>Prédiction & Scoring</h3>
+                <p>
+                    Modèles ML évaluent probabilité d'incident, gravité potentielle et 
+                    recommandent actions préventives avec niveau de confiance.
+                </p>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <h3>Orchestration Intelligente</h3>
+                <p>
+                    Agents décident collaborativement: alertes, arrêts d'urgence, replanification 
+                    LOTO, notification superviseurs selon protocoles C-25.
+                </p>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">5</div>
+                <h3>Exécution Sécurisée</h3>
+                <p>
+                    Actions automatisées avec garde-fous: validation humaine requise pour 
+                    décisions critiques, logs immuables, respect procédures cadenassage.
+                </p>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">6</div>
+                <h3>Traçabilité & Audit</h3>
+                <p>
+                    Journalisation complète: qui, quoi, quand, pourquoi. Conformité CNESST, 
+                    rapports automatisés, explicabilité SHAP des décisions IA.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace d'agents -->
+    <section id="marketplace">
+        <div class="section-header">
+            <div class="section-badge">Marketplace</div>
+            <h2 class="section-title">40+ Agents SST/QHSE Spécialisés</h2>
+            <p class="section-subtitle">
+                Découvrez nos agents autonomes dédiés à la prévention, conformité et protection
+            </p>
+        </div>
+
+        <div class="marketplace-filters">
+            <button class="filter-btn active">Tous</button>
+            <button class="filter-btn">Prévention</button>
+            <button class="filter-btn">LOTO</button>
+            <button class="filter-btn">Analyse Risques</button>
+            <button class="filter-btn">Conformité</button>
+            <button class="filter-btn">Santé</button>
+        </div>
+
+        <div class="agents-grid">
+            <!-- Agent 1: Dynamic LOTO Planner -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-42 · Dynamic LOTO Planner</h3>
+                    <span class="agent-category">LOTO</span>
+                </div>
+                <p class="agent-description">
+                    Replanifie en temps réel les séquences de cadenassage selon accès/zones. 
+                    Détecte conflits, optimise durées, génère check-lists dynamiques.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Latence</div>
+                        <div class="metric-value">≤ 1.8s</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Gain temps</div>
+                        <div class="metric-value">-30%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Conformité</div>
+                        <div class="metric-value">C-25</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <!-- Agent 2: Posture Risk Analyzer -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-15 · Posture Risk Analyzer</h3>
+                    <span class="agent-category">Prévention</span>
+                </div>
+                <p class="agent-description">
+                    Analyse vidéo en temps réel des postures ergonomiques. Détecte TMS, 
+                    soulèvements incorrects, fatigue musculaire. Score REBA/RULA automatisé.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Précision</div>
+                        <div class="metric-value">94%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">FPS</div>
+                        <div class="metric-value">30</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">TMS ↓</div>
+                        <div class="metric-value">-67%</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <!-- Agent 3: PPE Compliance Monitor -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-08 · PPE Compliance Monitor</h3>
+                    <span class="agent-category">Conformité</span>
+                </div>
+                <p class="agent-description">
+                    Vérifie port EPI via vision: casque, gants, lunettes, harnais. 
+                    Alertes instantanées, logs d'accès zones restreintes, rapports conformité.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Détection</div>
+                        <div class="metric-value">97%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Faux +</div>
+                        <div class="metric-value">&lt;2%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Zones</div>
+                        <div class="metric-value">50+</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <!-- Agent 4: Chemical Exposure Tracker -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-23 · Chemical Exposure Tracker</h3>
+                    <span class="agent-category">Santé</span>
+                </div>
+                <p class="agent-description">
+                    Surveillance exposition produits chimiques via capteurs ambiance + badges 
+                    personnels. Calcul VME/VLE, alertes dépassement, traçabilité SIMDUT.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Capteurs</div>
+                        <div class="metric-value">200+</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Alertes</div>
+                        <div class="metric-value">Temps réel</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">VME/VLE</div>
+                        <div class="metric-value">Auto</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <!-- Agent 5: Incident Root Cause Analyzer -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-31 · Incident Root Cause Analyzer</h3>
+                    <span class="agent-category">Analyse</span>
+                </div>
+                <p class="agent-description">
+                    Analyse multi-facteurs post-incident: 5 Pourquoi, diagramme Ishikawa, 
+                    corrélations Safety Graph. Recommandations préventives automatisées.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Facteurs</div>
+                        <div class="metric-value">15+</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Précision</div>
+                        <div class="metric-value">89%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Délai</div>
+                        <div class="metric-value">&lt;2h</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+
+            <!-- Agent 6: Near-Miss Predictor -->
+            <article class="agent-card">
+                <div class="agent-header">
+                    <h3 class="agent-id">A-19 · Near-Miss Predictor</h3>
+                    <span class="agent-category">Prédiction</span>
+                </div>
+                <p class="agent-description">
+                    ML prédictif identifie situations à haut potentiel de quasi-accident. 
+                    Analyse patterns historiques, conditions météo, fatigue, équipements.
+                </p>
+                <div class="agent-metrics">
+                    <div class="metric-item">
+                        <div class="metric-label">Prédiction</div>
+                        <div class="metric-value">7j</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">F1 Score</div>
+                        <div class="metric-value">0.87</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Incidents ↓</div>
+                        <div class="metric-value">-74%</div>
+                    </div>
+                </div>
+                <div class="agent-actions">
+                    <button class="btn-add">Ajouter au plan</button>
+                    <button class="btn-details">Détails</button>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn-primary">Voir les 40+ agents SST/QHSE →</a>
+        </div>
+    </section>
+
+    <!-- Guides LOTO Dynamiques -->
+    <section>
+        <div class="loto-guides">
+            <div class="section-header" style="text-align: left;">
+                <div class="section-badge">Ressources Interactives</div>
+                <h2 class="section-title" style="text-align: left;">Guides LOTO Dynamiques</h2>
+                <p class="section-subtitle" style="text-align: left; margin: 0;">
+                    Procédures de cadenassage filtrables par équipement, secteur et niveau de risque
+                </p>
+            </div>
+
+            <div class="guide-list">
+                <div class="guide-item">
+                    <div class="guide-info">
+                        <h4>🔒 LOTO — Presses Hydrauliques 200T+</h4>
+                        <div class="guide-meta">
+                            <span>📋 12 étapes</span>
+                            <span>⏱️ 18 min</span>
+                            <span>🎯 Risque: Élevé</span>
+                            <span>✓ CNESST validé</span>
+                        </div>
+                    </div>
+                    <div class="guide-actions">
+                        <button class="btn-details">Consulter</button>
+                        <button class="btn-details">📄 PDF</button>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-info">
+                        <h4>🔒 LOTO — Convoyeurs & Systèmes Motorisés</h4>
+                        <div class="guide-meta">
+                            <span>📋 9 étapes</span>
+                            <span>⏱️ 12 min</span>
+                            <span>🎯 Risque: Moyen</span>
+                            <span>✓ OSHA compliant</span>
+                        </div>
+                    </div>
+                    <div class="guide-actions">
+                        <button class="btn-details">Consulter</button>
+                        <button class="btn-details">📄 PDF</button>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-info">
+                        <h4>🔒 LOTO — Systèmes Électriques Haute Tension</h4>
+                        <div class="guide-meta">
+                            <span>📋 15 étapes</span>
+                            <span>⏱️ 25 min</span>
+                            <span>🎯 Risque: Critique</span>
+                            <span>✓ CSA Z462</span>
+                        </div>
+                    </div>
+                    <div class="guide-actions">
+                        <button class="btn-details">Consulter</button>
+                        <button class="btn-details">📄 PDF</button>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-info">
+                        <h4>🔒 LOTO — Circuits Pneumatiques & Hydrauliques</h4>
+                        <div class="guide-meta">
+                            <span>📋 10 étapes</span>
+                            <span>⏱️ 14 min</span>
+                            <span>🎯 Risque: Moyen</span>
+                            <span>✓ ISO 14118</span>
+                        </div>
+                    </div>
+                    <div class="guide-actions">
+                        <button class="btn-details">Consulter</button>
+                        <button class="btn-details">📄 PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Center -->
+    <section>
+        <div class="trust-center">
+            <div class="section-header" style="color: white;">
+                <div class="section-badge" style="background: rgba(255,255,255,0.2); color: white;">
+                    Trust Center
+                </div>
+                <h2 class="section-title" style="color: white;">Transparence, Sécurité & Performance</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                    Benchmarks en temps réel, conformité réglementaire et explicabilité des décisions IA
+                </p>
+            </div>
+
+            <div class="trust-grid">
+                <div class="trust-metric">
+                    <h3>98.7%</h3>
+                    <p><strong>Disponibilité (SLA)</strong><br>Uptime garanti 99.5%</p>
+                </div>
+
+                <div class="trust-metric">
+                    <h3>F1: 0.91</h3>
+                    <p><strong>Précision Globale</strong><br>7/30/90 jours validés</p>
+                </div>
+
+                <div class="trust-metric">
+                    <h3>&lt;1.8s</h3>
+                    <p><strong>Latence Moyenne</strong><br>Détection → Action</p>
+                </div>
+
+                <div class="trust-metric">
+                    <h3>100%</h3>
+                    <p><strong>Traçabilité</strong><br>Journaux immuables</p>
+                </div>
+
+                <div class="trust-metric">
+                    <h3>ISO 27001</h3>
+                    <p><strong>Certifications</strong><br>+ SOC 2 Type II</p>
+                </div>
+
+                <div class="trust-metric">
+                    <h3>SHAP</h3>
+                    <p><strong>Explicabilité</strong><br>Décisions transparentes</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn-primary">Consulter le Trust Center Complet →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section style="text-align: center;">
+        <h2 class="section-title">Prêt à Révolutionner Votre SST/QHSE ?</h2>
+        <p class="section-subtitle" style="margin-bottom: 2rem;">
+            Découvrez comment 40+ agents peuvent transformer votre approche de la sécurité
+        </p>
+        <div class="cta-group" style="justify-content: center;">
+            <a href="#" class="btn-primary">Demander une démo personnalisée</a>
+            <a href="#" class="btn-secondary" style="color: var(--primary-blue); border-color: var(--primary-blue);">
+                Télécharger le guide complet
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 GenAISafety - AgenticX5 SST/QHSE. Tous droits réservés.</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
+                Conformité: Loi 25 • C-25 • CNESST • OSHA • ISO 45001 • ISO 27001
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtre marketplace
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                console.log('Filtre:', btn.textContent);
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
